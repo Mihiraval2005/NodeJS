@@ -198,3 +198,55 @@
 
 
 // eventLoop
+// const Emiter = require('events');
+
+// const ap = new Emiter();
+
+// ap.on('hii',(name)=>{
+//     console.log(`onnn ${name}`)
+// })
+
+// ap.emit('hii',"mihir");
+
+
+// Crypto Module
+
+// const crypto = require('crypto');
+
+// const hash = crypto.createHash('sha256').update('pass35a').digest('hex');
+
+// console.log(hash)
+
+const crypto = require('crypto');
+
+const algo = 'aes-256-cbc';
+
+const key = '12345678123456781234567812345678';
+
+const iv = crypto.randomBytes(16);
+
+
+function Encryption(data) {
+    // console.log(data);
+    const ciper = crypto.createCipheriv(algo, key, iv);
+    let decryp = ciper.update(data, 'utf8', 'hex');
+    decryp += ciper.final('hex');
+    return decryp
+}
+
+function Decryption(Encryption) {
+    const deci = crypto.createDecipheriv(algo, key, iv);
+    const dec = deci.update(Encryption, 'hex', 'utf8');
+    dec += deci.final('utf8')
+    return dec
+}
+const msg = "hi mihir";
+
+const enc = Encryption(msg);
+
+console.log(enc, " encryptes")
+
+
+const d = Decryption(enc);
+console.log(d, "decription msg")
+// formhandeling 
