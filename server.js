@@ -209,6 +209,7 @@
 // ap.emit('hii',"mihir");
 
 
+
 // Crypto Module
 
 // const crypto = require('crypto');
@@ -217,36 +218,151 @@
 
 // console.log(hash)
 
-const crypto = require('crypto');
+// const crypto = require('crypto');
 
-const algo = 'aes-256-cbc';
+// const algo = 'aes-256-cbc';
 
-const key = '12345678123456781234567812345678';
+// const key = '12345678123456781234567812345678';
 
-const iv = crypto.randomBytes(16);
-
-
-function Encryption(data) {
-    // console.log(data);
-    const ciper = crypto.createCipheriv(algo, key, iv);
-    let decryp = ciper.update(data, 'utf8', 'hex');
-    decryp += ciper.final('hex');
-    return decryp
-}
-
-function Decryption(Encryption) {
-    const deci = crypto.createDecipheriv(algo, key, iv);
-    const dec = deci.update(Encryption, 'hex', 'utf8');
-    dec += deci.final('utf8')
-    return dec
-}
-const msg = "hi mihir";
-
-const enc = Encryption(msg);
-
-console.log(enc, " encryptes")
+// const iv = crypto.randomBytes(16);
 
 
-const d = Decryption(enc);
-console.log(d, "decription msg")
-// formhandeling 
+// function Encryption(data) {
+//     // console.log(data);
+//     const ciper = crypto.createCipheriv(algo, key, iv);
+//     let decryp = ciper.update(data, 'utf8', 'hex');
+//     decryp += ciper.final('hex');
+//     return decryp
+// }
+
+// function Decryption(Encryption) {
+//     const decipher = crypto.createDecipheriv(algo, key, iv);
+//     let dec = decipher.update(Encryption, 'hex', 'utf8');
+//     dec += decipher.final('utf8');
+//     return dec;
+// }
+// const msg = "hi mihir";
+
+// const enc = Encryption(msg);
+
+// console.log(enc, " encryptes")
+
+
+// const d = Decryption(enc);
+// console.log(d, "decription msg")
+ 
+
+
+// Event Loop & Asynchronous Programming in Node.js
+// Node.js is single-threaded but can handle many tasks at once using the event loop. This allows non-blocking operations like reading files, making API calls, and working with databases.
+
+// console.log("1 node");
+
+// process.nextTick(()=> console.log("2 node"));
+// Promise.resolve().then(()=>console.log("3 node"));
+
+// setTimeout(()=>console.log("4 node"),0);
+// setImmediate(()=> console.log("5 node"));
+
+// console.log('6 node')
+
+// function g(name,callback){
+//     console.log(name);
+//     callback()
+// }
+// g('m',function(){
+//     console.log("call")
+// })
+
+// callbackHell
+// setTimeout(()=>{
+//     console.log("1");
+//     setTimeout(()=>{
+//         console.log("2");
+//         setTimeout(()=>{
+//             console.log('3')
+//             setTimeout(()=>{
+//                 console.log('4')
+//             },3000)
+//         },3000)
+//     },3000)
+// },3000)
+
+
+// Promises (then, catch)
+// const promise = new Promise((res,rej)=>{
+//     let success = false;
+//     setTimeout(()=>{
+//         if(success){
+
+//             res("workDone")
+//         }
+//         else{
+
+//             rej("problem");
+//         }
+//     },1000)
+// })
+// promise.then((msg)=>{
+//     console.log(msg)
+// }).catch((err)=>{
+//     console.log(err)
+// })
+
+
+
+// async/await
+// function Data(){
+//     return new Promise((res)=>{
+//         setTimeout(()=>{
+
+//             res("done")
+//         },1000)
+//     })
+// }
+
+// async function  fetc(){
+//     console.log("fetching")
+//     const prev = await Data();
+//     console.log(prev,"fdfsfsdfsdfsddfd")
+// }
+
+// fetc()
+
+
+
+// express[server create]
+
+// const express = require('express');
+
+// const app = express();
+
+// const port = 5000;
+
+// app.get('/',(req,res)=>{
+//     res.send("hu")
+// })
+// app.listen(port)
+
+
+
+// 5. Handling Request Parameters & Query Strings
+const express = require('express');
+
+const app = express();
+
+app.get('/',(req,res)=>{
+    res.send('get Data')
+})
+
+app.get('/user/:id', (req, res) => {
+    res.send(`User ID: ${req.params.id}`);
+});
+
+ 
+app.get('/search', (req, res) => {
+    res.send(`Search term: ${req.query.q}`);
+});
+
+
+app.listen(5000)
