@@ -196,6 +196,68 @@
 
 
 
+// callback
+
+// Why use?
+// 🔹 Reading files (fs.readFile())
+// 🔹 Fetching API data (https.get())
+// 🔹 Handling web requests (http.createServer())
+// 🔹 Working with databases (MongoDB, MySQL)
+// 🔹 Setting timers (setTimeout(), setInterval())
+// 🔹 Listening to events (EventEmitter)
+
+
+// Handel JSON data
+// const http = require('http');
+
+
+// const server = http.createServer((req,res)=>{
+//     if(req.url === '/api'){
+//         res.writeHead(200,{"content-type":"application-json"});
+//         res.end(JSON.stringify({message:"hii mihir",status:"success"}));
+//     }
+//     else{
+//         res.writeHead(404,{"content-type":"application-json"});
+//         res.end(JSON.stringify({message:"not found",status:"fail"}))
+//     }
+// })
+
+// server.listen(3000,()=>{
+//     console.log("server start");
+// })
+
+
+// create server using EXPRESS
+// const express = require('express');
+
+// const app = express();
+
+// app.get('/',(req,res)=>{
+//     res.send("start")
+// })
+
+// app.listen(3000)
+
+// middleware-----------------------------------------
+// const express = require('express');
+// const app = express();
+
+
+
+// app.use((req, res, next) => {
+//     console.log("run middleware");
+//     next();
+// })
+
+// app.get('/', (req, res) => {
+//     res.send("hyy home page");
+// })
+// app.get('/about', (req, res) => {
+//     res.send("hyy about");
+// })
+
+// app.listen(3000);
+
 
 // eventLoop
 // const Emiter = require('events');
